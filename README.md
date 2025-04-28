@@ -35,4 +35,4 @@ You may use the provided test cases to see your progress. All test cases should 
 
 See this video:
 
-[![Video with a description of the homework task](https://img.youtube.com/vi/-0rJ1umkdUA/0.jpg)](https://www.youtube.com/watch?v=-0rJ1umkdUA)
+TBA
