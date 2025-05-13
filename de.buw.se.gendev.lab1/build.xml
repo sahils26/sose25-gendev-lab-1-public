@@ -110,6 +110,7 @@
 		<pathelement path="/home/runner/eclipse/plugins/org.eclipse.emf.mapping.ecore2xml_2.12.0.v20230211-1150.jar" />
 		<pathelement path="/home/runner/eclipse/plugins/org.eclipse.uml2.uml.profile.standard_1.5.0.v20221116-1811.jar" />
 		<pathelement path="/home/runner/eclipse/plugins/org.eclipse.uml2_5.5.3.v20221116-1811.jar" />
+		<pathelement path="/home/runner/eclipse/plugins/org.eclipse.ocl_3.20.0.v20240305-1416.jar" />
 	</path>
 
 	<target name="init" depends="properties">
@@ -294,11 +295,11 @@
 		<delete file="${plugin.destination}/de.buw.se.gendev.lab1_0.1.0.202504231326.zip" />
 		<delete dir="${temp.folder}" />
 		<delete dir="${basedir}/reports" />
+		<delete dir="${basedir}/src-gen" />
 		<delete file="${compilation.problem.marker}" quiet="true" />
 	</target>
 
 	<target name="refresh" depends="init" if="eclipse.running" description="Refresh this folder.">
-		<eclipse.convertPath fileSystemPath="C:/Users/Soaib/Documents/Courses/GSE_2024/Ex1/Christine Mathews_333854_assignsubmission_file/de.buw.se.gendev.lab1" property="resourcePath" />
 		<eclipse.refreshLocal resource="${resourcePath}" depth="infinite" />
 	</target>
 
@@ -326,28 +327,6 @@
 		<apitooling.apigeneration projectName="${projectName}" project="${projectLocation}" binary="${binary.folders}" target="${target.folder}" extramanifests="${extraManifests}" allownonapiproject="${allowNonApiProject}" />
 	</target>
 
-
-	<target name="testXXX" depends="build.jars" description="Run JUnit 5 tests">
-		<mkdir dir="reports" />
-		<java classname="org.junit.platform.console.ConsoleLauncher" fork="true" failonerror="true">
-			<classpath>
-				<!-- <pathelement path="${projectLocation}"/>  You might not need this if @dot is included -->
-				<pathelement path="@dot" />
-				<fileset dir="lib">
-					<include name="junit-platform-console-standalone-*.jar" />
-				</fileset>
-			</classpath>
-
-			<arg value="--scan-class-path" />
-			<!-- This will scan the classpath defined above -->
-			<arg value="--reports-dir" />
-			<arg path="reports" />
-		</java>
-	</target>
-
-
-
-
 	<target name="test" depends="build.jars" description="Run JUnit 5 tests">
 		<mkdir dir="${basedir}/reports" />
 		<junitlauncher>
@@ -372,6 +351,7 @@
 	</target>
 
 	<target name="codegen">
+		<mkdir dir="src-gen" />
 		<emf.Ecore2Java model="${basedir}/model/lab1.ecore" genModel="${basedir}/model/lab1.genmodel" modelProject="${basedir}" modelProjectFragmentPath="src-gen" reconcilegenmodel="reload">
 		</emf.Ecore2Java>
 	</target>
