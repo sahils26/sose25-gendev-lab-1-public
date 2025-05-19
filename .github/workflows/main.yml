@@ -36,10 +36,10 @@ jobs:
           -buildfile "${GITHUB_WORKSPACE}/de.buw.se.gendev.lab1/build.xml" \
           -nosplash \
           -consolelog \
-          -data "${GITHUB_WORKSPACE}/de.buw.se.gendev.lab1" \
+          -data "${GITHUB_WORKSPACE}" \
           clean codegen test
       shell: /usr/bin/bash -e {0}
-    
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
