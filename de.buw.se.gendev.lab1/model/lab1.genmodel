@@ -10,8 +10,27 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Lab1" basePackage="de.buw.se.gendev" disposableProviderFactory="true"
       ecorePackage="lab1.ecore#/">
-    <genClasses ecoreClass="lab1.ecore#//NewEClass1">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//NewEClass1/newAttribute"/>
+    <genClasses ecoreClass="lab1.ecore#//Users">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Users/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Users/email"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Users/enrolledCourses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Users/ownsCertificate"/>
+    </genClasses>
+    <genClasses ecoreClass="lab1.ecore#//Courses">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Courses/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Courses/duration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Courses/hasLessons"/>
+    </genClasses>
+    <genClasses ecoreClass="lab1.ecore#//Lessons">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Lessons/topic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Lessons/order"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Lessons/includesQuiz"/>
+    </genClasses>
+    <genClasses ecoreClass="lab1.ecore#//Quizzes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Quizzes/title"/>
+    </genClasses>
+    <genClasses ecoreClass="lab1.ecore#//Certificates">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Certificates/issuedDate"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -6,4 +6,12 @@
 
 <plugin>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated lab1 -->
+      <package
+            uri="http://www.example.org/lab1"
+            class="de.buw.se.gendev.lab1.Lab1Package"
+            genModel="model/lab1.genmodel"/>
+   </extension>
+
 </plugin>

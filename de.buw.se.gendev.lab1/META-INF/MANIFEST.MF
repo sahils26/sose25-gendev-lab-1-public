@@ -7,6 +7,10 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: de.buw.se.gendev.lab1,
+ de.buw.se.gendev.lab1.impl,
+ de.buw.se.gendev.lab1.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ocl.pivot;visibility:=reexport,
  org.eclipse.ocl.examples.codegen;visibility:=reexport,
@@ -15,10 +19,14 @@ Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
  com.google.guava,
  junit-jupiter-api,
- org.eclipse.ocl.pivot.uml,
  org.apache.log4j,
  org.eclipse.uml2,
  org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.resources,
- org.eclipse.ocl.ecore
+ org.eclipse.ocl.ecore,
+ org.eclipse.emf.codegen;bundle-version="2.25.0",
+ org.eclipse.emf.edit;bundle-version="2.22.0",
+ org.eclipse.emf.ecore.xmi.source;bundle-version="2.38.0",
+ org.eclipse.ui;bundle-version="3.207.100",
+ org.eclipse.core.runtime.source;bundle-version="3.33.0"
 Bundle-ActivationPolicy: lazy

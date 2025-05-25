@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lab1:Users
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:lab1="http://www.example.org/lab1"
+    username="sahil"
+    email="sahil123@gmail.com"/>
