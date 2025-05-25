@@ -87,13 +87,22 @@ public interface Lab1Package extends EPackage {
 	int USERS__EMAIL = 1;
 
 	/**
+	 * The feature id for the '<em><b>Age</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USERS__AGE = 2;
+
+	/**
 	 * The feature id for the '<em><b>Enrolled Courses</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USERS__ENROLLED_COURSES = 2;
+	int USERS__ENROLLED_COURSES = 3;
 
 	/**
 	 * The feature id for the '<em><b>Owns Certificate</b></em>' containment reference list.
@@ -102,7 +111,7 @@ public interface Lab1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USERS__OWNS_CERTIFICATE = 3;
+	int USERS__OWNS_CERTIFICATE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Users</em>' class.
@@ -111,16 +120,7 @@ public interface Lab1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USERS_FEATURE_COUNT = 4;
-
-	/**
-	 * The operation id for the '<em>Unique Course Titles</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USERS___UNIQUE_COURSE_TITLES__DIAGNOSTICCHAIN_MAP = 0;
+	int USERS_FEATURE_COUNT = 5;
 
 	/**
 	 * The operation id for the '<em>Not Null Username</em>' operation.
@@ -129,7 +129,25 @@ public interface Lab1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USERS___NOT_NULL_USERNAME__DIAGNOSTICCHAIN_MAP = 1;
+	int USERS___NOT_NULL_USERNAME__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
+	 * The operation id for the '<em>Age Above18</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USERS___AGE_ABOVE18__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
+	 * The operation id for the '<em>Unique Course Titles</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USERS___UNIQUE_COURSE_TITLES__DIAGNOSTICCHAIN_MAP = 2;
 
 	/**
 	 * The number of operations of the '<em>Users</em>' class.
@@ -138,7 +156,7 @@ public interface Lab1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USERS_OPERATION_COUNT = 2;
+	int USERS_OPERATION_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link de.buw.se.gendev.lab1.impl.CoursesImpl <em>Courses</em>}' class.
@@ -393,6 +411,17 @@ public interface Lab1Package extends EPackage {
 	EAttribute getUsers_Email();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.buw.se.gendev.lab1.Users#getAge <em>Age</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Age</em>'.
+	 * @see de.buw.se.gendev.lab1.Users#getAge()
+	 * @see #getUsers()
+	 * @generated
+	 */
+	EAttribute getUsers_Age();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link de.buw.se.gendev.lab1.Users#getEnrolledCourses <em>Enrolled Courses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -433,6 +462,16 @@ public interface Lab1Package extends EPackage {
 	 * @generated
 	 */
 	EOperation getUsers__NotNullUsername__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link de.buw.se.gendev.lab1.Users#ageAbove18(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Age Above18</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Age Above18</em>' operation.
+	 * @see de.buw.se.gendev.lab1.Users#ageAbove18(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getUsers__AgeAbove18__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link de.buw.se.gendev.lab1.Courses <em>Courses</em>}'.
@@ -642,6 +681,14 @@ public interface Lab1Package extends EPackage {
 		EAttribute USERS__EMAIL = eINSTANCE.getUsers_Email();
 
 		/**
+		 * The meta object literal for the '<em><b>Age</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USERS__AGE = eINSTANCE.getUsers_Age();
+
+		/**
 		 * The meta object literal for the '<em><b>Enrolled Courses</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -674,6 +721,14 @@ public interface Lab1Package extends EPackage {
 		 */
 		EOperation USERS___NOT_NULL_USERNAME__DIAGNOSTICCHAIN_MAP = eINSTANCE
 				.getUsers__NotNullUsername__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Age Above18</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation USERS___AGE_ABOVE18__DIAGNOSTICCHAIN_MAP = eINSTANCE.getUsers__AgeAbove18__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link de.buw.se.gendev.lab1.impl.CoursesImpl <em>Courses</em>}' class.

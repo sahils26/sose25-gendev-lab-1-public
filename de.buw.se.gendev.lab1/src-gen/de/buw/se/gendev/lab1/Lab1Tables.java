@@ -69,6 +69,7 @@ public class Lab1Tables extends AbstractTables
 	public static final /*@NonInvalid*/ ClassId CLSSid_Users = Lab1Tables.PACKid_http_c_s_s_www_example_org_s_lab1.getClassId("Users", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = Lab1Tables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
+	public static final /*@NonInvalid*/ IntegerValue INT_18 = ValueUtil.integerValueOf("18");
 	public static final /*@NonInvalid*/ String STR_ = "";
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Certificates = TypeId.ORDERED_SET.getSpecializedId(Lab1Tables.CLSSid_Certificates, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Courses = TypeId.ORDERED_SET.getSpecializedId(Lab1Tables.CLSSid_Courses, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
@@ -245,10 +246,11 @@ public class Lab1Tables extends AbstractTables
 		public static final ExecutorProperty _Quizzes__title = new EcoreExecutorProperty(Lab1Package.Literals.QUIZZES__TITLE, Types._Quizzes, 0);
 		public static final ExecutorProperty _Quizzes__Lessons__includesQuiz = new ExecutorPropertyWithImplementation("Lessons", Types._Quizzes, 1, new EcoreLibraryOppositeProperty(Lab1Package.Literals.LESSONS__INCLUDES_QUIZ));
 
-		public static final ExecutorProperty _Users__email = new EcoreExecutorProperty(Lab1Package.Literals.USERS__EMAIL, Types._Users, 0);
-		public static final ExecutorProperty _Users__enrolledCourses = new EcoreExecutorProperty(Lab1Package.Literals.USERS__ENROLLED_COURSES, Types._Users, 1);
-		public static final ExecutorProperty _Users__ownsCertificate = new EcoreExecutorProperty(Lab1Package.Literals.USERS__OWNS_CERTIFICATE, Types._Users, 2);
-		public static final ExecutorProperty _Users__username = new EcoreExecutorProperty(Lab1Package.Literals.USERS__USERNAME, Types._Users, 3);
+		public static final ExecutorProperty _Users__age = new EcoreExecutorProperty(Lab1Package.Literals.USERS__AGE, Types._Users, 0);
+		public static final ExecutorProperty _Users__email = new EcoreExecutorProperty(Lab1Package.Literals.USERS__EMAIL, Types._Users, 1);
+		public static final ExecutorProperty _Users__enrolledCourses = new EcoreExecutorProperty(Lab1Package.Literals.USERS__ENROLLED_COURSES, Types._Users, 2);
+		public static final ExecutorProperty _Users__ownsCertificate = new EcoreExecutorProperty(Lab1Package.Literals.USERS__OWNS_CERTIFICATE, Types._Users, 3);
+		public static final ExecutorProperty _Users__username = new EcoreExecutorProperty(Lab1Package.Literals.USERS__USERNAME, Types._Users, 4);
 		static {
 			Init.initEnd();
 		}
@@ -576,6 +578,7 @@ public class Lab1Tables extends AbstractTables
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _Users = {
+			Lab1Tables.Properties._Users__age,
 			Lab1Tables.Properties._Users__email,
 			Lab1Tables.Properties._Users__enrolledCourses,
 			OCLstdlibTables.Properties._OclElement__oclContainer,

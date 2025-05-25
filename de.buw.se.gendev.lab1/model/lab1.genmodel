@@ -10,27 +10,33 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Lab1" basePackage="de.buw.se.gendev" disposableProviderFactory="true"
       ecorePackage="lab1.ecore#/">
-    <genClasses ecoreClass="lab1.ecore#//Users">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Users/username"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Users/email"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Users/enrolledCourses"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Users/ownsCertificate"/>
+    <genClasses ecoreClass="lab1.ecore#//Owner">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Owner/fullName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Owner/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Owner/age"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Owner/owns"/>
     </genClasses>
-    <genClasses ecoreClass="lab1.ecore#//Courses">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Courses/title"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Courses/duration"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Courses/hasLessons"/>
+    <genClasses ecoreClass="lab1.ecore#//Garden">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Garden/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Garden/location"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Garden/has"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Garden/uses"/>
     </genClasses>
-    <genClasses ecoreClass="lab1.ecore#//Lessons">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Lessons/topic"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Lessons/order"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Lessons/includesQuiz"/>
+    <genClasses ecoreClass="lab1.ecore#//Plant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Plant/species"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Plant/heightInCm"/>
     </genClasses>
-    <genClasses ecoreClass="lab1.ecore#//Quizzes">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Quizzes/title"/>
+    <genClasses ecoreClass="lab1.ecore#//Sensor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Sensor/sensorID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Sensor/batteryLevel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lab1.ecore#//Sensor/triggers"/>
     </genClasses>
-    <genClasses ecoreClass="lab1.ecore#//Certificates">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Certificates/issuedDate"/>
+    <genClasses ecoreClass="lab1.ecore#//Alert">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Alert/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Alert/priority"/>
+    </genClasses>
+    <genClasses ecoreClass="lab1.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lab1.ecore#//Entity/Id"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

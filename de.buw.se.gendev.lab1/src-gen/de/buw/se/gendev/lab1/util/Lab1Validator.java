@@ -45,7 +45,7 @@ public class Lab1Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USERS__UNIQUE_COURSE_TITLES = 1;
+	public static final int USERS__UNIQUE_COURSE_TITLES = 3;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Not Null Username' of 'Users'.
@@ -53,7 +53,15 @@ public class Lab1Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USERS__NOT_NULL_USERNAME = 2;
+	public static final int USERS__NOT_NULL_USERNAME = 1;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Age Above18' of 'Users'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int USERS__AGE_ABOVE18 = 2;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Has Quiz In ALesson' of 'Courses'.
@@ -61,7 +69,7 @@ public class Lab1Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COURSES__HAS_QUIZ_IN_ALESSON = 3;
+	public static final int COURSES__HAS_QUIZ_IN_ALESSON = 4;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Positive Duration' of 'Courses'.
@@ -69,7 +77,7 @@ public class Lab1Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COURSES__POSITIVE_DURATION = 4;
+	public static final int COURSES__POSITIVE_DURATION = 5;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Valid Title' of 'Certificates'.
@@ -77,7 +85,7 @@ public class Lab1Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CERTIFICATES__VALID_TITLE = 5;
+	public static final int CERTIFICATES__VALID_TITLE = 6;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -85,7 +93,7 @@ public class Lab1Validator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 5;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 6;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -165,9 +173,11 @@ public class Lab1Validator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(users, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateUsers_uniqueCourseTitles(users, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateUsers_notNullUsername(users, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateUsers_uniqueCourseTitles(users, diagnostics, context);
+			result &= validateUsers_ageAbove18(users, diagnostics, context);
 		return result;
 	}
 
@@ -180,6 +190,16 @@ public class Lab1Validator extends EObjectValidator {
 	public boolean validateUsers_notNullUsername(Users users, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return users.notNullUsername(diagnostics, context);
+	}
+
+	/**
+	 * Validates the ageAbove18 constraint of '<em>Users</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateUsers_ageAbove18(Users users, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return users.ageAbove18(diagnostics, context);
 	}
 
 	/**

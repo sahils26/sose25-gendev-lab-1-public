@@ -166,8 +166,8 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getUsers_EnrolledCourses() {
-		return (EReference) usersEClass.getEStructuralFeatures().get(2);
+	public EAttribute getUsers_Age() {
+		return (EAttribute) usersEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getUsers_OwnsCertificate() {
+	public EReference getUsers_EnrolledCourses() {
 		return (EReference) usersEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -184,8 +184,17 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getUsers_OwnsCertificate() {
+		return (EReference) usersEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getUsers__UniqueCourseTitles__DiagnosticChain_Map() {
-		return usersEClass.getEOperations().get(0);
+		return usersEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -194,6 +203,15 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 	 * @generated
 	 */
 	public EOperation getUsers__NotNullUsername__DiagnosticChain_Map() {
+		return usersEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getUsers__AgeAbove18__DiagnosticChain_Map() {
 		return usersEClass.getEOperations().get(1);
 	}
 
@@ -364,10 +382,12 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 		usersEClass = createEClass(USERS);
 		createEAttribute(usersEClass, USERS__USERNAME);
 		createEAttribute(usersEClass, USERS__EMAIL);
+		createEAttribute(usersEClass, USERS__AGE);
 		createEReference(usersEClass, USERS__ENROLLED_COURSES);
 		createEReference(usersEClass, USERS__OWNS_CERTIFICATE);
-		createEOperation(usersEClass, USERS___UNIQUE_COURSE_TITLES__DIAGNOSTICCHAIN_MAP);
 		createEOperation(usersEClass, USERS___NOT_NULL_USERNAME__DIAGNOSTICCHAIN_MAP);
+		createEOperation(usersEClass, USERS___AGE_ABOVE18__DIAGNOSTICCHAIN_MAP);
+		createEOperation(usersEClass, USERS___UNIQUE_COURSE_TITLES__DIAGNOSTICCHAIN_MAP);
 
 		coursesEClass = createEClass(COURSES);
 		createEAttribute(coursesEClass, COURSES__TITLE);
@@ -426,6 +446,8 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUsers_Email(), ecorePackage.getEString(), "email", null, 0, 1, Users.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUsers_Age(), ecorePackage.getEInt(), "age", null, 1, 1, Users.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUsers_EnrolledCourses(), this.getCourses(), null, "enrolledCourses", null, 0, -1, Users.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -433,8 +455,8 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 				Users.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getUsers__UniqueCourseTitles__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
-				"uniqueCourseTitles", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getUsers__NotNullUsername__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"notNullUsername", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
 		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
@@ -443,8 +465,18 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getUsers__NotNullUsername__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
-				"notNullUsername", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getUsers__AgeAbove18__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "ageAbove18", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getUsers__UniqueCourseTitles__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"uniqueCourseTitles", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
@@ -532,7 +564,7 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 	protected void createEcoreAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation(this, source, new String[] {});
-		addAnnotation(usersEClass, source, new String[] { "constraints", "notNullUsername" });
+		addAnnotation(usersEClass, source, new String[] { "constraints", "uniqueCourseTitles" });
 		addAnnotation(coursesEClass, source, new String[] { "constraints", "positiveDuration" });
 		addAnnotation(certificatesEClass, source, new String[] { "constraints", "validTitle" });
 	}
@@ -545,10 +577,11 @@ public class Lab1PackageImpl extends EPackageImpl implements Lab1Package {
 	 */
 	protected void createPivotAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
-		addAnnotation(getUsers__UniqueCourseTitles__DiagnosticChain_Map(), source,
-				new String[] { "body", "self.enrolledCourses->isUnique(title)" });
 		addAnnotation(getUsers__NotNullUsername__DiagnosticChain_Map(), source,
 				new String[] { "body", "not username.oclIsUndefined() and username <> \'\'" });
+		addAnnotation(getUsers__AgeAbove18__DiagnosticChain_Map(), source, new String[] { "body", "age > 18" });
+		addAnnotation(getUsers__UniqueCourseTitles__DiagnosticChain_Map(), source,
+				new String[] { "body", "self.enrolledCourses->isUnique(title)" });
 		addAnnotation(getCourses__HasQuizInALesson__DiagnosticChain_Map(), source,
 				new String[] { "body", "hasLessons->exists(l | l.includesQuiz <> null)" });
 		addAnnotation(getCourses__PositiveDuration__DiagnosticChain_Map(), source,

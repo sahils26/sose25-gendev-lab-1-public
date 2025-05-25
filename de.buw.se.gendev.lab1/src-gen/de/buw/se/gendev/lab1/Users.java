@@ -19,12 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.buw.se.gendev.lab1.Users#getUsername <em>Username</em>}</li>
  *   <li>{@link de.buw.se.gendev.lab1.Users#getEmail <em>Email</em>}</li>
+ *   <li>{@link de.buw.se.gendev.lab1.Users#getAge <em>Age</em>}</li>
  *   <li>{@link de.buw.se.gendev.lab1.Users#getEnrolledCourses <em>Enrolled Courses</em>}</li>
  *   <li>{@link de.buw.se.gendev.lab1.Users#getOwnsCertificate <em>Owns Certificate</em>}</li>
  * </ul>
  *
  * @see de.buw.se.gendev.lab1.Lab1Package#getUsers()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='notNullUsername'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='uniqueCourseTitles'"
  * @generated
  */
 public interface Users extends EObject {
@@ -73,6 +74,28 @@ public interface Users extends EObject {
 	void setEmail(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Age</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Age</em>' attribute.
+	 * @see #setAge(int)
+	 * @see de.buw.se.gendev.lab1.Lab1Package#getUsers_Age()
+	 * @model required="true"
+	 * @generated
+	 */
+	int getAge();
+
+	/**
+	 * Sets the value of the '{@link de.buw.se.gendev.lab1.Users#getAge <em>Age</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Age</em>' attribute.
+	 * @see #getAge()
+	 * @generated
+	 */
+	void setAge(int value);
+
+	/**
 	 * Returns the value of the '<em><b>Enrolled Courses</b></em>' containment reference list.
 	 * The list contents are of type {@link de.buw.se.gendev.lab1.Courses}.
 	 * <!-- begin-user-doc -->
@@ -111,5 +134,13 @@ public interface Users extends EObject {
 	 * @generated
 	 */
 	boolean notNullUsername(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='age &gt; 18'"
+	 * @generated
+	 */
+	boolean ageAbove18(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Users

@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.pivot.evaluation.Executor;
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableGreaterThanOperation;
 import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
 import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
@@ -50,6 +51,7 @@ import org.eclipse.ocl.pivot.values.SetValue.Accumulator;
  * <ul>
  *   <li>{@link de.buw.se.gendev.lab1.impl.UsersImpl#getUsername <em>Username</em>}</li>
  *   <li>{@link de.buw.se.gendev.lab1.impl.UsersImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link de.buw.se.gendev.lab1.impl.UsersImpl#getAge <em>Age</em>}</li>
  *   <li>{@link de.buw.se.gendev.lab1.impl.UsersImpl#getEnrolledCourses <em>Enrolled Courses</em>}</li>
  *   <li>{@link de.buw.se.gendev.lab1.impl.UsersImpl#getOwnsCertificate <em>Owns Certificate</em>}</li>
  * </ul>
@@ -96,6 +98,26 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 	 * @ordered
 	 */
 	protected String email = EMAIL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAge() <em>Age</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int AGE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getAge() <em>Age</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected int age = AGE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getEnrolledCourses() <em>Enrolled Courses</em>}' containment reference list.
@@ -176,6 +198,27 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 		email = newEmail;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Lab1Package.USERS__EMAIL, oldEmail, email));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getAge() {
+		return age;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAge(int newAge) {
+		int oldAge = age;
+		age = newAge;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Lab1Package.USERS__AGE, oldAge, age));
 	}
 
 	/**
@@ -359,6 +402,52 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean ageAbove18(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Users::ageAbove18";
+		try {
+			/**
+			 *
+			 * inv ageAbove18:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let result : Boolean[1] = age > 18
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor,
+					Lab1Package.Literals.USERS___AGE_ABOVE18__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE
+					.evaluate(executor, severity_0, Lab1Tables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			} else {
+				final /*@NonInvalid*/ int age = this.getAge();
+				final /*@NonInvalid*/ IntegerValue BOXED_age = ValueUtil.integerValueOf(age);
+				final /*@NonInvalid*/ boolean result = OclComparableGreaterThanOperation.INSTANCE
+						.evaluate(executor, BOXED_age, Lab1Tables.INT_18).booleanValue();
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE
+						.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object) null, diagnostics, context,
+								(Object) null, severity_0, result, Lab1Tables.INT_0)
+						.booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		} catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -382,6 +471,8 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 			return getUsername();
 		case Lab1Package.USERS__EMAIL:
 			return getEmail();
+		case Lab1Package.USERS__AGE:
+			return getAge();
 		case Lab1Package.USERS__ENROLLED_COURSES:
 			return getEnrolledCourses();
 		case Lab1Package.USERS__OWNS_CERTIFICATE:
@@ -404,6 +495,9 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 			return;
 		case Lab1Package.USERS__EMAIL:
 			setEmail((String) newValue);
+			return;
+		case Lab1Package.USERS__AGE:
+			setAge((Integer) newValue);
 			return;
 		case Lab1Package.USERS__ENROLLED_COURSES:
 			getEnrolledCourses().clear();
@@ -431,6 +525,9 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 		case Lab1Package.USERS__EMAIL:
 			setEmail(EMAIL_EDEFAULT);
 			return;
+		case Lab1Package.USERS__AGE:
+			setAge(AGE_EDEFAULT);
+			return;
 		case Lab1Package.USERS__ENROLLED_COURSES:
 			getEnrolledCourses().clear();
 			return;
@@ -453,6 +550,8 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 			return USERNAME_EDEFAULT == null ? username != null : !USERNAME_EDEFAULT.equals(username);
 		case Lab1Package.USERS__EMAIL:
 			return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT.equals(email);
+		case Lab1Package.USERS__AGE:
+			return age != AGE_EDEFAULT;
 		case Lab1Package.USERS__ENROLLED_COURSES:
 			return enrolledCourses != null && !enrolledCourses.isEmpty();
 		case Lab1Package.USERS__OWNS_CERTIFICATE:
@@ -470,10 +569,12 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-		case Lab1Package.USERS___UNIQUE_COURSE_TITLES__DIAGNOSTICCHAIN_MAP:
-			return uniqueCourseTitles((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
 		case Lab1Package.USERS___NOT_NULL_USERNAME__DIAGNOSTICCHAIN_MAP:
 			return notNullUsername((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+		case Lab1Package.USERS___AGE_ABOVE18__DIAGNOSTICCHAIN_MAP:
+			return ageAbove18((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+		case Lab1Package.USERS___UNIQUE_COURSE_TITLES__DIAGNOSTICCHAIN_MAP:
+			return uniqueCourseTitles((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
@@ -493,6 +594,8 @@ public class UsersImpl extends MinimalEObjectImpl.Container implements Users {
 		result.append(username);
 		result.append(", email: ");
 		result.append(email);
+		result.append(", age: ");
+		result.append(age);
 		result.append(')');
 		return result.toString();
 	}
